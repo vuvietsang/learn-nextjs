@@ -1,3 +1,4 @@
+import { route } from "next/dist/server/router";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { authApi } from "../api-client";
@@ -19,7 +20,7 @@ export default function LoginPage() {
 	};
 	const handleGetProfileClick = async () => {
 		try {
-			profile;
+			router.push("/about");
 		} catch (error) {
 			console.log("Fail to getProfile");
 		}
@@ -37,7 +38,7 @@ export default function LoginPage() {
 			<h1>Login Page</h1>
 			<p>Profile:{JSON.stringify(profile || {}, null, 4)}</p>
 			<button onClick={handleLoginClick}>Login</button>
-			<button onClick={handleGetProfileClick}>Get Profile</button>
+			<button onClick={handleGetProfileClick}>Go to About</button>
 			<button onClick={handleLogoutClick}>Logout</button>
 		</div>
 	);
